@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Maria del Mar
+ * 
  */
 public class Student {
 	private int code;

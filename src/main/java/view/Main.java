@@ -1,4 +1,4 @@
-package vista;
+package view;
 
 import exceptions.SchoolException;
 import java.sql.SQLException;
@@ -10,8 +10,7 @@ import dao.SchoolDAOImpl;
 import model.Student;
 
 /**
- *
- * @author Maria del Mar
+ * Sample class to learn about persistence with database
  */
 public class Main {
 
@@ -26,32 +25,38 @@ public class Main {
 			System.out.println("Estableciendo conexión con la base de datos...");
 			dao.connect();
 			System.out.println("Conectado.");
-			
+
 			// insert 1º student
 			System.out.println("Insertando alumnos");
-			Student s = new Student(11, "Bart", "Simpson", 10, "male");
+			Student s = new Student(1, "Bart", "Simpson", 10, "male");
 			try {
 				dao.insertStudent(s);
 				System.out.println("Alumno registrado");
 			} catch (SchoolException ex) {
 				System.out.println(ex.getMessage());
 			}
-			
+
 			// insert 2º student
-			s = new Student(12, "Lisa", "Simpson", 8, "female");
+			s = new Student(2, "Lisa", "Simpson", 8, "female");
 			try {
 				dao.insertStudent(s);
 				System.out.println("Alumno registrado");
 			} catch (SchoolException ex) {
 				System.out.println(ex.getMessage());
 			}
-			
+
+			// get 1 student
+			System.out.println("Datos alumno 1:");
+			Student student1 = dao.getStudent(1);
+			System.out.println(student1);
+
 			// list all students
 			System.out.println("Datos de los alumnos:");
 			ArrayList<Student> students = dao.getAllStudents();
 			for (Student student : students) {
 				System.out.println(student);
 			}
+
 		} catch (SQLException ex) {
 			System.out.println("ERROR con la BBDD: " + ex.getMessage());
 		} finally {

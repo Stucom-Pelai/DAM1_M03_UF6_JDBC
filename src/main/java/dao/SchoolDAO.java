@@ -13,6 +13,8 @@ public interface SchoolDAO {
 	public void disconnect() throws SQLException;
 
 	public ArrayList<Student> getAllStudents() throws SQLException;
+	
+	public Student getStudent(int id) throws SQLException;
 
 	public void insertStudent(Student s) throws SQLException, SchoolException;
 	
